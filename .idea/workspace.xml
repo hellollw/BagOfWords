@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13c067d6-cb66-4708-8471-6e0c92ccbbad" name="Default Changelist" comment="" />
+    <list default="true" id="13c067d6-cb66-4708-8471-6e0c92ccbbad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Machine_learning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Machine_learning.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BagOfWords.py" beforeDir="false" afterPath="$PROJECT_DIR$/BagOfWords.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Feature_Detect.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kmeans.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVM_mul.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/NongfuSpring/KeyNumList" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/NongfuSpring/WIN_20191113_22_30_08_Pro (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/NongfuSpring/WIN_20191113_22_30_08_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/NongfuSpring/WIN_20191113_22_30_09_Pro (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/NongfuSpring/WIN_20191113_22_30_09_Pro (3).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/NongfuSpring/WIN_20191113_22_30_09_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/NongfuSpring/WIN_20191113_22_30_10_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/NongfuSpring/desNdarray" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/Transformers/KeyNumList" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/Transformers/WIN_20191113_22_35_55_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/Transformers/WIN_20191113_22_35_56_Pro (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/Transformers/WIN_20191113_22_35_56_Pro (3).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/Transformers/WIN_20191113_22_35_56_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/Transformers/desNdarray" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chinese/KeyNumList" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chinese/WIN_20191113_22_37_53_Pro (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chinese/WIN_20191113_22_37_53_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chinese/WIN_20191113_22_37_54_Pro (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chinese/WIN_20191113_22_37_54_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chinese/WIN_20191113_22_37_56_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chinese/WIN_20191113_22_37_57_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chinese/desNdarray" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/try.py" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +56,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="last_opened_file_path" value="M:/GIT/Machine_learning" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -194,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573728630253</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="BagOfWords">
+      <created>1573728684732</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573728684732</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

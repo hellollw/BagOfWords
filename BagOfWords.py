@@ -7,9 +7,16 @@
 降维阶段：Kmeans， 利用Kmeans将衣服图像降维成k个码本的向量
 训练阶段：SVM_mul， 对训练集每一个样本（每一个k维向量）进行SVM多分类训练
 
+各个文件夹作用：
+test 存放训练过程中生成的数据，包括Kmeans生成的簇中心centroids,各样本分类clusterassement等必要数据
+image_training 用于存放训练的图片样本
+image_test 用于存放测试用的图片样本
+import 用于存放各个模块的代码，如Kmeans,SVM
+
 文件夹存放格式：
 不同种类图片分布于不同文件夹,文件夹名称不能重复
 图片与存放SURF特征的文件位于同一个文件夹
+测试集文件路径和训练集文件路径分开放置
 
 读取文件夹固定格式：
 cup, scissors 等以该类物品名称命名，起始时刻应初始化文件种类列表，也就是建立标签的索引file_label_list
@@ -88,7 +95,7 @@ def classifyPreprocessing(path, file_label_list, centroids, desNdarray_name='des
         for i in range(len(datanum)):
             sample = mat(zeros((1, K)))
             lastnum = newnum
-            newnum += int(datanum[i])   #强制转换为整形数据
+            newnum += int(datanum[i])  # 强制转换为整形数据
             for num in range(lastnum, newnum):  # 从上一个特征向量数取至下一个特征向量数
                 surf = datasurf[num, :]  # 取出一个surf特征
                 max_dist = inf
@@ -113,7 +120,7 @@ def classifyPreprocessing(path, file_label_list, centroids, desNdarray_name='des
 
 
 # 分类训练阶段：使用one vs one方法训练多分类SVM，对于k个种类需要训练k(k-1)/2个SVM分类器
-# 输入：训练样本数据：trainingList, 训练样本标签：trainingLabelList, 约束常数：C，松弛变量:toler, 选择核函数类型：kTup, 最大迭代次数：maxIter
+# 输入：训练样本数据：trainingMat, 训练样本标签：trainingLabelList, 约束常数：C，松弛变量:toler, 选择核函数类型：kTup, 最大迭代次数：maxIter
 # 输出：k(k-1)/2个SVM分类器参数:SVMList, 种类索引：NumList, 标签列表：WholeLabelList
 def classificationTraining(trainingMat, trainingLabel, C, toler, kTup, maxIter):
     SVMList, NumList, WholeLabelList = SVM_mul.TrainMulSVM(trainingMat, trainingLabel, C, toler, kTup, maxIter)
@@ -121,24 +128,42 @@ def classificationTraining(trainingMat, trainingLabel, C, toler, kTup, maxIter):
     return SVMList, NumList, WholeLabelList
 
 
+# 测试阶段：输入测试样本，预测测试样本的类型
+# 输入：测试样本存储路径：path, 簇类样本中心：centroids, k(k-1)/2个SVM分类器参数:SVMList, 种类索引：NumList, 标签列表：WholeLabelList
+# 输出：测试集测试标签：callabel, 测试集误差：wrongrate
+def classificationtest(path, centroids, SVMList, NumList, WholeLabelList):
+    test_file_label_list = getFileLabelList(path)
+    imagePreprocessing(path=path, file_label_list=test_file_label_list)
+    testmat, labeltest = classifyPreprocessing(path, test_file_label_list, centroids)
+    CalLabel, WrongRate = SVM_mul.Test(SVMList, testmat, labeltest, NumList, WholeLabelList)
+    print("测试集测试完成，错误率为:%d" % WrongRate)
+    return CalLabel, WrongRate
+
+
 if __name__ == '__main__':
-    image_path = './image/'  # 定义图片文件夹路径
+    image_path = './image_training/'  # 定义图片文件夹路径
     k = 50  # 定义码本数量
+    C = 50  # 定义约束常数
+    toler = 0.0001  # 定义松弛变量
+    kTup = ('lin', 1.3)  # 定义核函数
+    maxIter = 500  # 定义最大迭代数量
     file_label_list = getFileLabelList(image_path)
 
     # 检验图像处理阶段 已通过
     # imagePreprocessing(image_path,file_label_list)
 
-    #检验Kmeans聚类阶段 已通过
+    # 检验Kmeans聚类阶段 已通过
     # centroids, clusterassement = KmeansPreprocessing(image_path, file_label_list, k)
     # savetxt('./test/centroids',centroids)
     # savetxt('./test/clusterassement',clusterassement)
 
-    # 检验分类训练阶段的数据预处理
+    # 检验分类训练阶段的数据预处理 已通过
     centroids = loadtxt('./test/centroids')
-    datamat, labellist = classifyPreprocessing(image_path,file_label_list,centroids)
-    savetxt('./test/datamat',datamat)
-    f =open('./test/labellist.txt','w')
+    datamat, labellist = classifyPreprocessing(image_path, file_label_list, centroids)
+    savetxt('./test/datamat', datamat)
+    f = open('./test/labellist.txt', 'w')
     for label in labellist:
-        f.write(label+'\n')
+        f.write(label + '\n')
 
+    # 检验分类训练阶段 已通过
+    classificationTraining(datamat, labellist, C, toler, kTup, maxIter)

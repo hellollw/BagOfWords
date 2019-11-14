@@ -36,6 +36,42 @@ import Kmeans as Kmeans
 import os
 
 
+# 设置类来管理该函数数据
+class BagOfWords:
+    def __init__(self, training_path, test_path, store_path, k, C, toler, kTup, maxIter):
+        # 路径参数
+        self.training_path = training_path
+        self.test_path = test_path
+        self.store_path = store_path
+
+        # Kmeans参数
+        # 输入：
+        self.k = k
+        # 输出更新：
+        self.centroids = []  # ????
+        self.clusterassement = []
+
+        # SVM参数
+        # 输入：
+        self.C = C
+        self.toler = toler
+        self.kTup = kTup
+        self.maxIter = maxIter
+        # 输出更新:
+        self.SVM_List = []
+        self.NumList = []
+        self.WholeLabelList = []
+
+        # 训练集参数
+        self.m_training = 0
+        self.classnum = 0
+
+        # 测试集参数
+        self.m_test = 0
+        self.wrongrate = 100
+        self.CalLabel = []
+
+
 # 获得文件夹标签索引
 # 输入：图片文件夹路径:path
 # 输出：文件夹标签索引:file_label_list
@@ -128,26 +164,50 @@ def classificationTraining(trainingMat, trainingLabel, C, toler, kTup, maxIter):
     return SVMList, NumList, WholeLabelList
 
 
+# 训练阶段总和
+# 输入：存储数据存储类:BagOfWords
+# 输出：更新数据存储类
+def bagOfWords_training(os):
+    file_label_list = getFileLabelList(os.training_path)
+    os.centroids, os.clusterassement = KmeansPreprocessing(os.training_path, file_label_list, os.k)
+    savetxt(store_path + 'centroids', os.centroids)
+    savetxt(store_path + 'clusterassement', os.clusterassement)
+    datamat, labellist = classifyPreprocessing(os.training_path, file_label_list, os.centroids)
+    savetxt(store_path + 'datamat', datamat)
+    os.m = len(labellist)
+    f = open('./test/labellist.txt', 'w')
+    for label in labellist:
+        f.write(label + '\n')
+    os.SVM_List, os.NumList, os.WholeLabelList = classificationTraining(datamat, labellist, os.C, os.toler, os.kTup,
+                                                                        os.maxIter)
+    os.classnum = len(os.WholeLabelList)
+
+
+
 # 测试阶段：输入测试样本，预测测试样本的类型
-# 输入：测试样本存储路径：path, 簇类样本中心：centroids, k(k-1)/2个SVM分类器参数:SVMList, 种类索引：NumList, 标签列表：WholeLabelList
-# 输出：测试集测试标签：callabel, 测试集误差：wrongrate
-def classificationtest(path, centroids, SVMList, NumList, WholeLabelList):
-    test_file_label_list = getFileLabelList(path)
-    imagePreprocessing(path=path, file_label_list=test_file_label_list)
-    testmat, labeltest = classifyPreprocessing(path, test_file_label_list, centroids)
-    CalLabel, WrongRate = SVM_mul.Test(SVMList, testmat, labeltest, NumList, WholeLabelList)
-    print("测试集测试完成，错误率为:%d" % WrongRate)
-    return CalLabel, WrongRate
+# 输入：存储数据存储类:BagOfWords
+# 输出：更新数据存储类，测试集测试标签：callabel, 测试集误差：wrongrate
+def classificationtest(os):
+    test_file_label_list = getFileLabelList(os.test_path)
+    imagePreprocessing(path=os.test_path, file_label_list=test_file_label_list)
+    testmat, labeltest = classifyPreprocessing(os.test_path, test_file_label_list, os.centroids)
+    os.CalLabel, os.WrongRate = SVM_mul.Test(os.SVM_List, testmat, labeltest, os.NumList, os.WholeLabelList)
+    os.m_test = len(labeltest)
+    print("测试集测试完成，错误率为:%d" % os.WrongRate)
 
 
 if __name__ == '__main__':
-    image_path = './image_training/'  # 定义图片文件夹路径
+    training_path = './image_training/'  # 定义图片文件夹路径
+    test_path = './image_test/'
+    store_path = './test/'
     k = 50  # 定义码本数量
     C = 50  # 定义约束常数
     toler = 0.0001  # 定义松弛变量
     kTup = ('lin', 1.3)  # 定义核函数
     maxIter = 500  # 定义最大迭代数量
-    file_label_list = getFileLabelList(image_path)
+    os = BagOfWords(training_path, test_path, store_path, k, C, toler, kTup, maxIter)
+
+    # file_label_list = getFileLabelList(os.training_path)
 
     # 检验图像处理阶段 已通过
     # imagePreprocessing(image_path,file_label_list)
@@ -158,12 +218,12 @@ if __name__ == '__main__':
     # savetxt('./test/clusterassement',clusterassement)
 
     # 检验分类训练阶段的数据预处理 已通过
-    centroids = loadtxt('./test/centroids')
-    datamat, labellist = classifyPreprocessing(image_path, file_label_list, centroids)
-    savetxt('./test/datamat', datamat)
-    f = open('./test/labellist.txt', 'w')
-    for label in labellist:
-        f.write(label + '\n')
-
-    # 检验分类训练阶段 已通过
-    classificationTraining(datamat, labellist, C, toler, kTup, maxIter)
+    # centroids = loadtxt('./test/centroids')
+    # datamat, labellist = classifyPreprocessing(os.training_path, file_label_list, centroids)
+    # savetxt('./test/datamat', datamat)
+    # f = open('./test/labellist.txt', 'w')
+    # for label in labellist:
+    #     f.write(label + '\n')
+    #
+    # # 检验分类训练阶段 已通过
+    # classificationTraining(datamat, labellist, C, toler, kTup, maxIter)

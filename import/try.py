@@ -100,7 +100,9 @@ if __name__ == '__main__':
     datalist.append(data1.A[0])
     datalist.append(data2.A[0])
     # datalist[1] = datalist[1]+1
-    print(mat(datalist))
+    print(datalist)
+    datalist=1
+    print(datalist)
     # K = shape(dataSet2)[0]
     # print(K)
     # print(dataSet2[1,:])

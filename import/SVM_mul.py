@@ -15,6 +15,9 @@
     输入训练集样本标签可为任意格式
     具体格式可参考iris数据集
 
+更新：
+    在CalLabel处加入一列作为指示预测结果是否正确（正确：1，错误：0）
+
 """
 from numpy import *
 import SVM as SVM  # 导入SVM分类器（SMO算法实现）
@@ -117,9 +120,11 @@ def Test(SVMList, testMat, testLabel, NumList, WholeLabelList):
         ComLabel += Add_Matrix  # 根据每个SVM分类器来更新测试集综合矩阵
     Max_index = argmax(ComLabel.A, axis=1)
     for k in range(len(Max_index)):
-        CalLabel.append(WholeLabelList[Max_index[k]])
         if WholeLabelList[Max_index[k]] != testLabel[k]:
+            CalLabel.append([WholeLabelList[Max_index[k]],0])
             WrongRate += 1
+        else:
+            CalLabel.append([WholeLabelList[Max_index[k]],1])
     WrongRate = WrongRate / m * 100
     return CalLabel, WrongRate
 

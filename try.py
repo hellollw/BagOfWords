@@ -94,9 +94,20 @@ if __name__ == '__main__':
     # dataSet.append([4])
     # dataSet.append([7])
     # dataMat = mat(dataSet)
-    dataSet2 = mat([[1,2,1],[4,5,6],[7,8,9]])
-    dataSet2 = dataSet2[1,1]+1
-    print(type(dataSet2))
+    datalist = []
+    data1 =mat([1,2,3])
+    data2 = mat([4,5,6])
+    datalist.append(data1.A[0])
+    datalist.append(data2.A[0])
+    # datalist[1] = datalist[1]+1
+    print(mat(datalist))
+    # K = shape(dataSet2)[0]
+    # print(K)
+    # print(dataSet2[1,:])
+    # A = nonzero(dataSet2[:,1])[0]   #nonzero第一行返回行数
+    # print(A)
+    # print(any(A))
+    # print(type(dataSet2))
     # print(dataSet2[[0,1],1]+1)
     # savetxt('try.txt',dataMat2)
 

@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13c067d6-cb66-4708-8471-6e0c92ccbbad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BagOfWords.py" beforeDir="false" afterPath="$PROJECT_DIR$/BagOfWords.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Feature_Detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Feature_Detect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kmeans.py" beforeDir="false" afterPath="$PROJECT_DIR$/Kmeans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imageInfo/KeyNumList" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imageInfo/desNdarray" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/3_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/5-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/iris.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testSet_Label.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testSet_Label_nonlinear.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/trainingSet_Label.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/trainingSet_Label_nonlinear.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/trainingSet_Unlabel.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/try.py" beforeDir="false" afterPath="$PROJECT_DIR$/try.py" afterDir="false" />
-    </list>
+    <list default="true" id="13c067d6-cb66-4708-8471-6e0c92ccbbad" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +180,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573712158008</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="BagOfWords">
+      <created>1573728586745</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573728586745</updated>
+    </task>
+    <task id="LOCAL-00003" summary="BagOfWords">
+      <created>1573728630253</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573728630253</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,6 +210,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="try pycharm git" />
-    <option name="LAST_COMMIT_MESSAGE" value="try pycharm git" />
+    <MESSAGE value="BagOfWords" />
+    <option name="LAST_COMMIT_MESSAGE" value="BagOfWords" />
   </component>
 </project>

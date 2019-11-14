@@ -85,7 +85,7 @@ def ConstructTrainingSet(trainingData, trainingLabel):
     return Numlist, WholeLabelList, trainingList, trainingLabelList
 
 
-# 使用one vs one方法训练多分类SVM，对于k个种类需要训练k(k-1)/2个SVM分类器
+# 使用one vs one方法训练多分类SVM，对于k个种类需要训练k(k-1)/2个SVM分类器,其中SVMList存放的时SVM的类
 # 输入：训练样本数据：trainingList, 训练样本标签：trainingLabelList, 约束常数：C，松弛变量:toler, 选择核函数类型：kTup, 最大迭代次数：maxIter
 # 输出：k(k-1)/2个SVM分类器参数:SVMList, 种类索引：NumList, 标签列表：WholeLabelList
 def TrainMulSVM(trainingMat, trainingLabel, C, toler, kTup, maxIter):
